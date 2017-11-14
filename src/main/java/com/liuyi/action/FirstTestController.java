@@ -32,7 +32,18 @@ public class FirstTestController {
         demo.setId(1);
         demo.setName("liuyi");
         demo.setRemark("aaa");
-        demo.setHotMessage("aadfd");
+        demo.setHotMessage("what a girl");
+        demo.setCreateTime(new Date());
+        return demo;
+    }
+
+    @RequestMapping("/getDemo1")
+    public Demo getDemo1() {
+        Demo demo = new Demo();
+        demo.setId(1);
+        demo.setName("liuyi");
+        demo.setRemark("aaa");
+        demo.setHotMessage("what a girl");
         demo.setCreateTime(new Date());
         return demo;
     }
