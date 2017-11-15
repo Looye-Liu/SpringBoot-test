@@ -1,7 +1,7 @@
-package com.liuyi.service;
+package com.liuyi.action.demo.service;
 
-import com.liuyi.entity.Cat;
-import com.liuyi.repository.CatRepository;
+import com.liuyi.action.demo.entity.Cat;
+import com.liuyi.action.demo.repository.CatRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
  */
 @Service
 public class CatService {
+
     @Resource
     private CatRepository catRepository;
 
@@ -31,6 +32,10 @@ public class CatService {
     public String delete(int id) {
         catRepository.delete(id);
         return "delete success";
+    }
+
+    public Cat getById(int id) {
+        return catRepository.findOne(id);
     }
 
     public Iterable<Cat> queryAll() {

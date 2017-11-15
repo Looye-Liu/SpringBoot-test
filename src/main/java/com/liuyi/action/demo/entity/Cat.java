@@ -1,4 +1,4 @@
-package com.liuyi.entity;
+package com.liuyi.action.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -7,16 +7,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.context.annotation.ComponentScan;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Created by looye on 2017/11/12.
  */
 @SpringBootApplication
-public class FirstTestAction {//extends WebMvcConfigurerAdapter {
+public class FirstTestApp {//extends WebMvcConfigurerAdapter {
 //
 //    /**
 //     * @param converters
@@ -49,6 +50,6 @@ public class FirstTestAction {//extends WebMvcConfigurerAdapter {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(FirstTestAction.class, args);
+        SpringApplication.run(FirstTestApp.class, args);
     }
 }

@@ -1,16 +1,20 @@
-package com.liuyi.controller;
+package com.liuyi.action.demo.controller;
 
-import com.liuyi.entity.Cat;
-import com.liuyi.service.CatService;
-import org.springframework.stereotype.Controller;
+
+import com.liuyi.action.demo.entity.Cat;
+import com.liuyi.action.demo.service.CatService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by looye on 2017/11/14.
  */
-@Controller
+@RestController
 @RequestMapping("/cat")
 public class CatController {
 
@@ -21,8 +25,8 @@ public class CatController {
     public String insert() {
         Cat cat = new Cat();
         cat.setCateAge(12);
-        cat.setCateName("tom");
-        cat.setColour("blue");
+        cat.setCateName("sam");
+        cat.setColour("green");
         return catService.insert(cat);
     }
 
@@ -42,7 +46,17 @@ public class CatController {
     }
 
     @RequestMapping("/queryAll")
-    public Iterable<Cat> queryAll() {
-        return catService.queryAll();
+    public ArrayList<Cat> queryAll() {
+        ArrayList<Cat> result = new ArrayList<>();
+        Iterable<Cat> cats = catService.queryAll();
+        for (Cat cat : cats) {
+            result.add(cat);
+        }
+        return result;
+    }
+
+    @RequestMapping("/get")
+    public Cat getCat(int id) {
+        return catService.getById(id);
     }
 }

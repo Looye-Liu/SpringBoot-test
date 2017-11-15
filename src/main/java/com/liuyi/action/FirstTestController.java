@@ -48,4 +48,15 @@ public class FirstTestController {
         return demo;
     }
 
+    @RequestMapping("/getDemo2")
+    public Demo getDemo2() {
+        Demo demo = new Demo();
+        demo.setId(1);
+        demo.setName("liuyi");
+        demo.setRemark("aaa");
+        demo.setHotMessage("what a girl");
+        demo.setCreateTime(new Date());
+        return demo;
+    }
+
 }
