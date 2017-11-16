@@ -1,5 +1,6 @@
-package com.liuyi.action;
+package com.liuyi.controller;
 
+import com.liuyi.Demo;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +9,7 @@ import java.util.Date;
 
 /**
  * Created by looye on 2017/11/12.
+ * 注解@RestController 等价与@Controller(加在类上) 加上 @ResponseBody(加在方法上)
  */
 @RestController
 public class FirstTestController {
@@ -28,31 +30,23 @@ public class FirstTestController {
      */
     @RequestMapping("/getDemo")
     public Demo getDemo() {
-        Demo demo = new Demo();
-        demo.setId(1);
-        demo.setName("liuyi");
-        demo.setRemark("aaa");
-        demo.setHotMessage("what a girl");
-        demo.setCreateTime(new Date());
-        return demo;
+        return buildDemo("demo");
     }
 
     @RequestMapping("/getDemo1")
     public Demo getDemo1() {
-        Demo demo = new Demo();
-        demo.setId(1);
-        demo.setName("liuyi");
-        demo.setRemark("aaa");
-        demo.setHotMessage("what a girl");
-        demo.setCreateTime(new Date());
-        return demo;
+        return buildDemo("demo1");
     }
 
     @RequestMapping("/getDemo2")
     public Demo getDemo2() {
+        return buildDemo("demo2");
+    }
+
+    private Demo buildDemo(String name) {
         Demo demo = new Demo();
         demo.setId(1);
-        demo.setName("liuyi");
+        demo.setName(name);
         demo.setRemark("aaa");
         demo.setHotMessage("what a girl");
         demo.setCreateTime(new Date());

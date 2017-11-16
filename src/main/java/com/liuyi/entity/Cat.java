@@ -1,9 +1,6 @@
-package com.liuyi.action.demo.entity;
+package com.liuyi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 当JPA检测到有@Entity注解的时候，会在数据库中生成对应的表结构
@@ -13,12 +10,13 @@ import javax.persistence.Id;
  * Created by looye on 2017/11/14.
  */
 @Entity
+@Table(name = "cat")
 public class Cat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String cateName;
-    private int cateAge;
+    private String catName;
+    private int catAge;
     private String colour;
 
     public int getId() {
@@ -29,20 +27,20 @@ public class Cat {
         this.id = id;
     }
 
-    public String getCateName() {
-        return cateName;
+    public String getCatName() {
+        return catName;
     }
 
-    public void setCateName(String cateName) {
-        this.cateName = cateName;
+    public void setCatName(String catName) {
+        this.catName = catName;
     }
 
-    public int getCateAge() {
-        return cateAge;
+    public int getCatAge() {
+        return catAge;
     }
 
-    public void setCateAge(int cateAge) {
-        this.cateAge = cateAge;
+    public void setCatAge(int catAge) {
+        this.catAge = catAge;
     }
 
     public String getColour() {

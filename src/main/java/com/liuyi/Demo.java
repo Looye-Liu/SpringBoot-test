@@ -1,4 +1,4 @@
-package com.liuyi.action;
+package com.liuyi;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

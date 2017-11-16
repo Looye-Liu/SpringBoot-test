@@ -1,6 +1,6 @@
-package com.liuyi.action.demo.repository;
+package com.liuyi.repository;
 
-import com.liuyi.action.demo.entity.Cat;
+import com.liuyi.entity.Cat;
 import org.springframework.data.repository.CrudRepository;
 
 /**
