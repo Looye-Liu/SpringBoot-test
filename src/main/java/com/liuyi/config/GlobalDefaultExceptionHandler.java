@@ -11,10 +11,17 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {
+
     @ResponseBody
     @ExceptionHandler(Exception.class)
-    public String cathcException(HttpServletRequest request, Exception e) {
-        return "对不起，服务器繁忙，请稍后再试";
+    public String cathException(HttpServletRequest request, Exception e) {
+        return "通用异常";
+    }
+
+    @ResponseBody
+    @ExceptionHandler(NullPointerException.class)
+    public String cathNullException(HttpServletRequest request, Exception e) {
+        return "空指针异常";
     }
 
 }

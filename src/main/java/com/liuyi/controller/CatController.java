@@ -1,6 +1,7 @@
 package com.liuyi.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.liuyi.entity.Cat;
 import com.liuyi.service.CatService;
 import org.springframework.util.StringUtils;
@@ -91,7 +92,22 @@ public class CatController {
 
     @RequestMapping("/getCatAll")
     public List<Cat> getCatAll() {
+        /**
+         * 第一个参数是第几页
+         * 第二个参数每页显示条数
+         */
+        PageHelper.startPage(1, 2);
         return catService.queryAll2();
+    }
+
+    @RequestMapping("/save")
+    public Cat save() {
+        Cat cat = new Cat();
+        cat.setColour("whilt");
+        cat.setCatAge(1);
+        cat.setCatName("Jack");
+        catService.save(cat);
+        return cat;
     }
 
 }

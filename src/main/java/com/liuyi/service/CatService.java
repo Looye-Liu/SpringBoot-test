@@ -71,4 +71,8 @@ public class CatService {
         return catDao.selectByCatColour2(colour);
     }
 
+    @Transactional
+    public void save(Cat cat) {
+        catMapper.save(cat);
+    }
 }
