@@ -2,6 +2,7 @@ package com.liuyi.service;
 
 import com.liuyi.dao.CatDao;
 import com.liuyi.entity.Cat;
+import com.liuyi.mapper.CatMapper;
 import com.liuyi.repository.CatRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ import java.util.List;
  */
 @Service
 public class CatService {
+
+    @Resource
+    private CatMapper catMapper;
 
     @Resource
     private CatRepository catRepository;
@@ -53,6 +57,14 @@ public class CatService {
 
     public Cat getCatDaoName(String colour) {
         return catDao.selectByCatColour(colour);
+    }
+
+    public List<Cat> likeName(String name) {
+        return catMapper.likeName(name);
+    }
+
+    public List<Cat> queryAll2() {
+        return catMapper.queryAll();
     }
 
     public List<Cat> getCatListDao(String colour) {

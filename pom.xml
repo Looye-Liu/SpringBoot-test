@@ -56,6 +56,22 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!--MyBatis提供拦截器接口，可以自己实现
+                   Github有提供一个https://github.com/pagehelper/Mybatis-PageHelper
+                -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+
         <!--thymeleaf模版引入-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
