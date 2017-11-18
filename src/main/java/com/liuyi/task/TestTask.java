@@ -42,7 +42,7 @@ public class TestTask {
      * 指定： 秒，分，小时，日期，月，新期，年（可选）
      */
 
-    @Scheduled(cron = "0/10 * * * * ? 2017")
+    @Scheduled(cron = "0/10 * * * * *")
     public void task1() {
         System.out.println("---task1----" + new Date());
     }
