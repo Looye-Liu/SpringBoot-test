@@ -63,6 +63,24 @@
             <version>1.1.1</version>
         </dependency>
 
+        <!-- quartz 任务调度-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
         <!--MyBatis提供拦截器接口，可以自己实现
                    Github有提供一个https://github.com/pagehelper/Mybatis-PageHelper
                 -->
