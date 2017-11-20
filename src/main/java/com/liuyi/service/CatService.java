@@ -3,7 +3,9 @@ package com.liuyi.service;
 import com.liuyi.dao.CatDao;
 import com.liuyi.entity.Cat;
 import com.liuyi.mapper.CatMapper;
+import com.liuyi.mapper.CatMapper2;
 import com.liuyi.repository.CatRepository;
+import org.apache.ibatis.annotations.Result;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,6 +20,9 @@ public class CatService {
 
     @Resource
     private CatMapper catMapper;
+
+    @Resource
+    private CatMapper2 catMapper2;
 
     @Resource
     private CatRepository catRepository;
@@ -65,6 +70,10 @@ public class CatService {
 
     public List<Cat> likeName(String name) {
         return catMapper.queryByName(name);
+    }
+
+    public List<Cat> queryByName(String name) {
+        return catMapper2.queryByName(name);
     }
 
     public List<Cat> queryAll2() {

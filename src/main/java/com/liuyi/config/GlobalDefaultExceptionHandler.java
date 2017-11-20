@@ -22,12 +22,14 @@ public class GlobalDefaultExceptionHandler {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public String catchException(HttpServletRequest request, Exception e) {
+        e.printStackTrace();
         return "通用异常";
     }
 
     @ResponseBody
     @ExceptionHandler(NullPointerException.class)
     public String catchNullException(HttpServletRequest request, Exception e) {
+        e.printStackTrace();
         return "空指针异常";
     }
 

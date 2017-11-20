@@ -14,7 +14,6 @@ public class PageConfiguration {
 
     @Bean
     public PageHelper pageHelper() {
-        System.out.println("-----pageHelper-----");
         Properties properties = new Properties();
         properties.setProperty("offsetAsPageNum", "true");
         properties.setProperty("rowBoundsWithCount", "true");

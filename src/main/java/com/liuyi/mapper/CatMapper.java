@@ -1,10 +1,7 @@
 package com.liuyi.mapper;
 
 import com.liuyi.entity.Cat;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,12 +9,20 @@ import java.util.List;
 /**
  * Created by looye on 2017/11/17.
  */
-@Mapper
 @Component(value = "catMapper")
 public interface CatMapper {
 
-    @Select("select id,cat_age catAge,cat_name catName, colour from cat where cat_name = #{name}")
-    List<Cat> queryByName(String name);
+    @Select("<script>select id,cat_age ,cat_name, colour from cat " +
+            "where 1=1" +
+            "<if test='name != null'>" +
+            " and cat_name = #{name} " +
+            "</if>" +
+            "</script>")
+    @Results({
+            @Result(property = "catAge", column = "cat_age"),
+            @Result(property = "catName", column = "cat_name")
+    })
+    List<Cat> queryByName(@Param("name") String name);
 
     @Select("select id,cat_age catAge,cat_name catName, colour  from cat")
     List<Cat> queryAll();

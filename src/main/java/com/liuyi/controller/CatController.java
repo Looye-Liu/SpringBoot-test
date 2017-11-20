@@ -85,6 +85,11 @@ public class CatController {
         return catService.getCatListDao(colour);
     }
 
+    @RequestMapping("/queryByName")
+    public List<Cat> getCatByName2(String catName) {
+        return catService.queryByName(catName);
+    }
+
     @RequestMapping("/getCatByName")
     public List<Cat> getCatByName(String catName) {
         return catService.likeName(catName);

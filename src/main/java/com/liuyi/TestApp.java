@@ -15,9 +15,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.liuyi"})
-@MapperScan("com.liuyi.mapper.*")
+@MapperScan("com.liuyi.mapper")
 @ServletComponentScan
-public class TestApp extends WebMvcConfigurerAdapter {
+public class TestApp {
 
     @Bean
     public ServletRegistrationBean myServerlet() {
@@ -25,7 +25,6 @@ public class TestApp extends WebMvcConfigurerAdapter {
     }
 
     public static void main(String[] args) {
-        //quarzTest();
         SpringApplication.run(TestApp.class, args);
     }
 
