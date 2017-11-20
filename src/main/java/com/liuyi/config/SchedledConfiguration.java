@@ -1,6 +1,6 @@
 package com.liuyi.config;
 
-import com.liuyi.task.ScheduledTask;
+import com.liuyi.job.TestJob;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
@@ -17,10 +17,10 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 public class SchedledConfiguration {
 
     @Bean
-    public MethodInvokingJobDetailFactoryBean detailFactoryBean(ScheduledTask scheduledTask) {
+    public MethodInvokingJobDetailFactoryBean detailFactoryBean(TestJob job) {
         MethodInvokingJobDetailFactoryBean bean = new MethodInvokingJobDetailFactoryBean();
         //设置对应的目标job对象
-        bean.setTargetObject(scheduledTask);
+        bean.setTargetObject(job);
         //设置对应的目标job对象方法
         bean.setTargetMethod("excute");
         return bean;

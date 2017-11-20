@@ -38,10 +38,7 @@ import java.util.Date;
 public class TestTask {
     /**
      * 每秒钟一次
-     * cron 定时任务指定参数，循环执行时间
-     * 指定： 秒，分，小时，日期，月，新期，年（可选）
      */
-
     @Scheduled(cron = "0/10 * * * * *")
     public void task1() {
         System.out.println("---task1----" + new Date());

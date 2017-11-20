@@ -17,7 +17,7 @@ import java.util.List;
 public interface CatMapper {
 
     @Select("select id,cat_age catAge,cat_name catName, colour from cat where cat_name = #{name}")
-    List<Cat> likeName(String name);
+    List<Cat> queryByName(String name);
 
     @Select("select id,cat_age catAge,cat_name catName, colour  from cat")
     List<Cat> queryAll();

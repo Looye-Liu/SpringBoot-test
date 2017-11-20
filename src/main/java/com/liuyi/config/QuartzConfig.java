@@ -7,6 +7,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * Created by looye on 2017/11/18.
+ * <p>
  * quartz的配置类
  * 1、SchedulerFactoryBean
  * 2、Scheduler类

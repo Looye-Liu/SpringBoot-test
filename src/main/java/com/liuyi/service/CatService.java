@@ -59,16 +59,16 @@ public class CatService {
         return catDao.selectByCatColour(colour);
     }
 
+    public List<Cat> getCatListDao(String colour) {
+        return catDao.selectByCatColour2(colour);
+    }
+
     public List<Cat> likeName(String name) {
-        return catMapper.likeName(name);
+        return catMapper.queryByName(name);
     }
 
     public List<Cat> queryAll2() {
         return catMapper.queryAll();
-    }
-
-    public List<Cat> getCatListDao(String colour) {
-        return catDao.selectByCatColour2(colour);
     }
 
     @Transactional

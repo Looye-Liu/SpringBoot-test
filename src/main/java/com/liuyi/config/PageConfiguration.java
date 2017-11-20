@@ -10,7 +10,7 @@ import java.util.Properties;
  * Created by looye on 2017/11/17.
  */
 @Configuration
-public class MyBatisConfiguration {
+public class PageConfiguration {
 
     @Bean
     public PageHelper pageHelper() {

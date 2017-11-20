@@ -29,7 +29,7 @@ public class CronChangeTask implements SchedulingConfigurer {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                System.out.println("----configureTasks----" + new Date());
+                System.out.println("----configureTask----" + new Date());
             }
         };
         Trigger trigger = new Trigger() {

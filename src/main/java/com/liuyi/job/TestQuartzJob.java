@@ -10,9 +10,10 @@ import org.quartz.JobExecutionException;
  * @author looye
  * @date 2017/11/18
  */
-public class TestJob2 implements Job {
+public class TestQuartzJob implements Job{
+
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("----TestJob2 ----");
+        System.out.println("----TestQuartzJob-quartz.job----");
     }
 }

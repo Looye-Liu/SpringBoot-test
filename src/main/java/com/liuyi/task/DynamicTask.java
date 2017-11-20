@@ -54,7 +54,7 @@ public class DynamicTask {
     }
 
     @RequestMapping("/restart")
-    public String startCron10() {
+    public String restart() {
         stopCron();// 先停止，在开启.
         future = threadPoolTaskScheduler.schedule(dynamicTask, new CronTrigger("*/10 * * * * *"));
         return "重启成功";
