@@ -2,11 +2,9 @@ package com.liuyi.task;
 
 
 import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by looye on 2017/11/18.
@@ -14,53 +12,32 @@ import java.util.concurrent.TimeUnit;
  * @author looye
  * @date 2017/11/18
  */
-public class BaseQuartzTask {
+public class BaseQuartzTask implements Job {
 
-    @Resource
+    @Autowired
     private Scheduler scheduler;
 
-    private String jobName;
-
-    private String groupName;
-
-    private String cronExpression;
-
-    private Class<? extends Job> jobClass;
-
-    BaseQuartzTask(String jobName, String groupName, String cronExpression, Class<? extends Job> jobClass) {
-        this.jobName = jobName;
-        this.groupName = groupName;
-        this.jobClass = jobClass;
-        this.cronExpression = cronExpression;
-    }
+    private String className = this.getClass().getSimpleName();
 
     /**
      * 等同于init-method
      */
     @PostConstruct
     public void init() {
+        //创建具体的任务jobDetail
+        JobDetail jobDetail = JobBuilder.newJob(this.getClass()).
+                withIdentity(String.format("%s_%s", className, "job"), String.format("%s_%s", className, "group")).build();
+
+        //创建触发时间点trigger
+        Trigger trigger = buildTrigger();
+
+        //4、将jobDetail和trigger交给scheduler安排触发
         try {
-            scheduler.start();
-            System.out.println("----getSchedulerName----" + scheduler.getSchedulerName());
-            //创建具体的任务jobDetail
-            JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(jobName, groupName).build();
-
-            //创建触发时间点trigger
-            Trigger trigger = buildTrigger();
-
-            //4、将jobDetail和trigger交给scheduler安排触发
             scheduler.scheduleJob(jobDetail, trigger);
-
-            //5、睡眠20秒，关闭定时调度任务
-            TimeUnit.SECONDS.sleep(20);
-            scheduler.pauseJob(jobDetail.getKey()); //暂停
-            //scheduler.shutdown();
-            System.out.println("-------stop------" + new Date());
         } catch (SchedulerException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
+
     }
 
     /**
@@ -70,9 +47,25 @@ public class BaseQuartzTask {
      */
     protected Trigger buildTrigger() {
         return TriggerBuilder.newTrigger()
-                .withIdentity(jobName, groupName)
-                .withSchedule(CronScheduleBuilder.cronSchedule(cronExpression))
+                .withIdentity(String.format("%s_%s", className, "trigger"), String.format("%s_%s", className, "tGroup"))
+                .withSchedule(CronScheduleBuilder.cronSchedule(getCronExpression()))
                 .build();
     }
 
+    /**
+     * 获取一个cron表达式
+     *
+     * @return
+     */
+    protected String getCronExpression() {
+        return "0/5 * * ? * *";
+    }
+
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        excute();
+    }
+
+    protected void excute() {
+    }
 }

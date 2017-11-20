@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * Created by looye on 2017/11/18.
@@ -34,13 +33,6 @@ public class SchedledConfiguration {
 
         //设置执行表达式
         bean.setCronExpression("0/5 * * * * ?");
-        return bean;
-    }
-
-    @Bean
-    public SchedulerFactoryBean schedulerFactoryBean(CronTriggerFactoryBean cronTriggerFactoryBean) {
-        SchedulerFactoryBean bean = new SchedulerFactoryBean();
-        bean.setTriggers(cronTriggerFactoryBean.getObject());
         return bean;
     }
 }

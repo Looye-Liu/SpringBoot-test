@@ -1,10 +1,6 @@
 package com.liuyi.task;
 
-import com.liuyi.job.TestQuartzJob2;
-import org.quartz.ScheduleBuilder;
-import org.quartz.SimpleScheduleBuilder;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
+import org.quartz.*;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,8 +11,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestQuartzTask2 extends BaseQuartzTask {
-    TestQuartzTask2() {
-        super("job2", "group2", "0/10 * * * * *", TestQuartzJob2.class);
+
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        System.out.println("---- TestQuartzTask2 execute----");
     }
 
     @Override
@@ -27,4 +25,6 @@ public class TestQuartzTask2 extends BaseQuartzTask {
                 .startNow().withSchedule(scheduleBuilder).build();
         return trigger;
     }
+
+
 }
